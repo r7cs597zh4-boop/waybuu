@@ -22,3 +22,20 @@ img.thumb:hover {
   z-index: 100;
   background-color: #fdfdfd;
 }
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+}
+
+.more-posts {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e8e8e8;
+}
+
+.more-posts ul {
+  list-style: none;
+  margin-left: 0;
+}

@@ -19,7 +19,26 @@ layout: default
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
+  <nav class="post-nav">
+    {%- if page.next -%}
+      <a href="{{ page.next.url | relative_url }}">← Newer: {{ page.next.title }}</a>
+    {%- endif -%}
+    {%- if page.previous -%}
+      <a href="{{ page.previous.url | relative_url }}">Older: {{ page.previous.title }} →</a>
+    {%- endif -%}
+  </nav>
 
+  <section class="more-posts">
+    <h3>More posts</h3>
+    <ul>
+      {%- for post in site.posts limit:6 -%}
+        {%- unless post.url == page.url -%}
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span></li>
+        {%- endunless -%}
+      {%- endfor -%}
+    </ul>
+    <p><a href="{{ '/' | relative_url }}">← All posts</a></p>
+  </section>
   {%- if site.disqus.shortname -%}
     {%- include disqus_comments.html -%}
   {%- endif -%}
